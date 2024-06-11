@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Queries\ProductQuery;
 use Database\Factories\ProductFactory;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,6 +20,7 @@ use Illuminate\Support\Carbon;
  * @property Collection<Property> $properties
  *
  * @method static ProductFactory factory($count = null, $state = [])
+ * @method static ProductQuery|Product query()
  */
 class Product extends Model
 {
@@ -39,5 +41,12 @@ class Product extends Model
             Property::class,
             'product_property_pivot',
         );
+    }
+
+    // Misc
+
+    function newEloquentBuilder($query): ProductQuery
+    {
+        return new ProductQuery($query);
     }
 }
