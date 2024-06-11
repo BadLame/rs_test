@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Database\Factories\PropertyValueFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,12 +16,18 @@ use Illuminate\Support\Carbon;
  * @property Carbon $created_at
  *
  * @property Property $property
+ *
+ * @method static PropertyValueFactory factory($count = null, $state = [])
  */
 class PropertyValue extends Model
 {
     use HasFactory;
 
     protected $table = 'property_values';
+
+    protected $fillable = [
+        'value',
+    ];
 
     // Relations
 

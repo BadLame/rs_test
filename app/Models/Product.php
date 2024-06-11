@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Database\Factories\ProductFactory;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -16,12 +17,19 @@ use Illuminate\Support\Carbon;
  * @property Carbon $created_at
  *
  * @property Collection<Property> $properties
+ *
+ * @method static ProductFactory factory($count = null, $state = [])
  */
 class Product extends Model
 {
     use HasFactory;
 
     protected $table = 'products';
+
+    protected $fillable = [
+        'price',
+        'amount',
+    ];
 
     // Relations
 
